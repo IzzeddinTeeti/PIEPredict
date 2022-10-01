@@ -1,0 +1,12 @@
+# annotations
+*.json
+*.xml
+*.csv
+
+# media
+*.png
+*.mp4
+
+# misc
+*.pyc
+*.pkl

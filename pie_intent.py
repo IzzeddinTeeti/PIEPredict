@@ -38,7 +38,7 @@ from keras.layers import RepeatVector
 from keras.layers.recurrent import LSTM
 from keras.models import Model
 from keras.models import load_model
-from keras.optimizers import RMSprop
+from tensorflow.keras.optimizers import RMSprop # change it from keras.optimizers to tensorflow.keras.optimizers
 from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import load_img
 from sklearn.metrics import accuracy_score
@@ -50,7 +50,7 @@ from utils import *
 #from utilities.jaad_utilities import *
 #from utilities.train_utilities import *
 
-K.set_image_dim_ordering('tf')
+K.set_image_data_format('channels_last') # change from set_image_dim_ordering to set_image_data_format 
 
 
 class PIEIntent(object):

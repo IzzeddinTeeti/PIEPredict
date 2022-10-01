@@ -31,7 +31,7 @@ import tensorflow as tf
 
 from prettytable import PrettyTable
 
-dim_ordering = K.image_dim_ordering()
+dim_ordering = K.set_image_data_format('channels_last') #change image_dim_ordering to set_image_data_format
 
 
 def train_predict(dataset='pie',
