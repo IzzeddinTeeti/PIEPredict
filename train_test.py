@@ -164,7 +164,7 @@ def train_intent(train_test=1):
         print(t)
 
         K.clear_session()
-        tf.reset_default_graph()
+        tf.compat.v1.reset_default_graph() # update the syntax from tf.reset_default_graph()
         return saved_files_path
 
 def main(dataset='pie', train_test=2):

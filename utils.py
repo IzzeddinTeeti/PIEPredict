@@ -20,6 +20,9 @@ limitations under the License.
 import sys
 import PIL
 from keras.preprocessing.image import img_to_array, load_img
+import logging
+import os
+import datetime
 
 
 def update_progress(progress):
@@ -33,6 +36,40 @@ def update_progress(progress):
     sys.stdout.write(text)
     sys.stdout.flush()
 
+
+# Logger
+
+def setup_logger(args):
+    """
+    Sets up the logging.
+    """
+    log_file_name = 'test.log' #'{:s}/{:s}-{date:%m-%d-%Hx}.log'.format(args.SAVE_ROOT, args.MODE, date=datetime.datetime.now())
+    # args.log_dir = 'logs/'+args.exp_name+'/'
+    # if not os.path.isdir(args.log_dir):
+        # os.makedirs(args.log_dir)
+        
+    added_log_file = '{}{}-{date:%m-%d-%Hx}.log'.format(args.log_dir, args.MODE, date=datetime.datetime.now())
+
+   
+    # Set up logging format.
+    _FORMAT = "[%(levelname)s: %(filename)s: %(lineno)4d]: %(message)s"
+
+    logging.root.handlers = []
+    logging.basicConfig(
+        level=logging.INFO, format=_FORMAT, stream=sys.stdout
+    )
+    logging.getLogger().addHandler(logging.FileHandler(log_file_name, mode='a'))
+    # logging.getLogger().addHandler(logging.FileHandler(added_log_file, mode='a'))
+
+
+def get_logger(name):
+    """
+    Retrieve the logger with the specified name or, if name is None, return a
+    logger which is the root logger of the hierarchy.
+    Args:
+        name (string): name of the logger.
+    """
+    return logging.getLogger(name)
 
 ######### DATA UTILITIES ##############
 

@@ -7,6 +7,11 @@
 *.png
 *.mp4
 
+# folder
+wandb/
+data/
+
 # misc
 *.pyc
 *.pkl
+*.log
